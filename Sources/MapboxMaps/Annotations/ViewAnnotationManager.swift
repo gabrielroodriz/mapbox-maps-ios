@@ -92,12 +92,9 @@ public final class ViewAnnotationManager {
     }
 
     /// The complete list of annotations associated with the receiver.
-    @available(*, deprecated, renamed: "allAnnotations", message: "Please use allAnnotations instead, or directly access ViewAnnotation itself")
-    public var annotations: [UIView: ViewAnnotationOptions] {
-        let values = idsByView.compactMapValues { [mapboxMap] id in
-            try? mapboxMap.options(forViewAnnotationWithId: id)
-        }
-        return values
+    @available(*, deprecated, message: "Use ViewAnnotation")
+        public var annotations: [UIView: ViewAnnotationOptions] {
+        return [:]
     }
 
     internal init(containerView: UIView, mapboxMap: MapboxMapProtocol, displayLink: Signal<Void>) {
